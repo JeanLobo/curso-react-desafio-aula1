@@ -1,18 +1,20 @@
-import React, { Component } from "react";
-import Reactotron from "reactotron-react-js";
+import React, { Component } from 'react';
+//import Reactotron from 'reactotron-react-js';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-import "./styles.css";
+import CepResults from '../CepResults';
+
+import './styles.css';
 
 export default class Main extends Component {
   state = {
-    cepSearch: "",
-    cepInfo: {}
+    cepSearch: '',
+    cepInfo: {},
   };
 
   handleChangeCep = event => {
@@ -25,7 +27,7 @@ export default class Main extends Component {
     const response = await api.get(`/${cepSearch}/json/`);
 
     if (response.data) {
-      this.setState({ cepInfo: response.data, cepSearch: "" });
+      this.setState({ cepInfo: response.data, cepSearch: '' });
     }
     //Reactotron.log(this.state.cepInfo);
   };
@@ -51,19 +53,7 @@ export default class Main extends Component {
             Pesquisar
           </Button>
 
-          <div className="cep-result">
-            <article key={cepInfo.cep}>
-              <strong>{cepInfo.cep}</strong>
-              <p>
-                {cepInfo.logradouro} <br />
-                Complento: {cepInfo.complemento} <br />
-                Bairro: {cepInfo.bairro} <br />
-                Cidade: {cepInfo.localidade} <br />
-                UF: {cepInfo.uf} <br />
-                Código do IBGE: {cepInfo.ibge} <br />
-              </p>
-            </article>
-          </div>
+          <CepResults cepInfo={cepInfo} />
         </Form>
       </div>
     );

@@ -1,0 +1,19 @@
+.cep-result {
+  max-width: 700px;
+  margin: 20px auto 0;
+}
+
+.cep-result article {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cep-result article p {
+  font-size: 16px;
+  color: #999;
+  margin-top: 5px;
+  line-height: 24px;
+}
